@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface CLTokenInputView : UIView
+@interface CLTokenInputView : UIScrollView
 
 @property (weak, nonatomic, nullable) IBOutlet NSObject <CLTokenInputViewDelegate> *delegate;
 /** An optional view that shows up presumably on the first line */
@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic, nullable) IBInspectable NSString *placeholderText;
 @property (strong, nonatomic, nullable) UIView *accessoryView;
 @property (assign, nonatomic) IBInspectable UIKeyboardType keyboardType;
+@property (nonatomic, assign) BOOL singleLine;
 @property (assign, nonatomic) IBInspectable UITextAutocapitalizationType autocapitalizationType;
 @property (assign, nonatomic) IBInspectable UITextAutocorrectionType autocorrectionType;
 @property (assign, nonatomic) IBInspectable UIKeyboardAppearance keyboardAppearance;
