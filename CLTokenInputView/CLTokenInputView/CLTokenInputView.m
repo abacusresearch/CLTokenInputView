@@ -295,7 +295,6 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
   CGFloat position = CGRectGetMaxX(textFieldRect);
   if (self.singleLine && (position >= rightBoundary)) {
     CGFloat offset = position - rightBoundary;
-    NSLog(@"Go to %f, is now %f", offset, self.contentOffset.x);
     if (self.contentSize.width != position) {
       self.contentSize = (CGSize) { position, CGRectGetHeight(self.frame) };
       if (self.contentOffset.x != offset) {
