@@ -11,7 +11,7 @@
 #import "CLBackspaceDetectingTextField.h"
 #import "CLTokenView.h"
 
-static CGFloat const HSPACE = 0.0;
+//static CGFloat const HSPACE = 0.0;
 static CGFloat const TEXT_FIELD_HSPACE = 4.0; // Note: Same as CLTokenView.PADDING_X
 static CGFloat const VSPACE = 4.0;
 static CGFloat const MINIMUM_TEXTFIELD_WIDTH = 56.0;
@@ -40,6 +40,8 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
 
 @implementation CLTokenInputView
 
+@synthesize delegate;
+
 - (void)commonInit
 {
   self.textField = [[CLBackspaceDetectingTextField alloc] initWithFrame:self.bounds];
@@ -56,6 +58,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
                      action:@selector(onTextFieldDidChange:)
            forControlEvents:UIControlEventEditingChanged];
   [self addSubview:self.textField];
+  [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tokenAreaTapped:)]];
   
   self.tokens = [NSMutableArray arrayWithCapacity:20];
   self.tokenViews = [NSMutableArray arrayWithCapacity:20];
@@ -70,6 +73,10 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
   
   self.intrinsicContentHeight = STANDARD_ROW_HEIGHT;
   [self repositionViews];
+}
+
+-(void) tokenAreaTapped:(id) sender {
+  [self.textField becomeFirstResponder];
 }
 
 - (id)initWithFrame:(CGRect)frame

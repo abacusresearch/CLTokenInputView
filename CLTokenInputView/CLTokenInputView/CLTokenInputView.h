@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CLTokenInputView : UIScrollView
 
-@property (weak, nonatomic, nullable) IBOutlet NSObject <CLTokenInputViewDelegate,UIScrollViewDelegate> *delegate;
+@property (weak, nonatomic, nullable) IBOutlet NSObject <CLTokenInputViewDelegate, UIScrollViewDelegate> *delegate;
 /** An optional view that shows up presumably on the first line */
 @property (strong, nonatomic, nullable) UIView *fieldView;
 /** Option text which can be displayed before the first line (e.g. "To:") */
